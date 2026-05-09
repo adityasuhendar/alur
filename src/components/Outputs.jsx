@@ -1,0 +1,126 @@
+import { Map, Mountain, BarChart3, Box, FileText, CheckCircle } from "lucide-react";
+
+export default function Outputs() {
+  const outputs = [
+    {
+      icon: Map,
+      title: "Orthophoto",
+      subtitle: "Citra Udara Presisi",
+      description: "Citra udara yang telah terkoreksi secara geometrik sehingga skala seragam dan setiap objek berada pada posisi koordinat sebenarnya.",
+      features: [
+        "Akurasi tinggi untuk pengukuran jarak dan luas",
+        "Efektif untuk monitoring progres proyek",
+      ],
+      stat: "99.9%",
+      statLabel: "Akurasi Resolusi",
+    },
+    {
+      icon: Mountain,
+      title: "Peta Kontur Digital",
+      subtitle: "Dasar Perencanaan Lahan",
+      description: "Penyajian informasi elevasi dan relief permukaan tanah secara presisi sebagai fondasi data untuk perencanaan konstruksi.",
+      features: [
+        "Visualisasi relief lahan yang jelas",
+        "Mengurangi risiko kesalahan desain",
+      ],
+      stat: "0.5m",
+      statLabel: "Interval Kontur",
+    },
+    {
+      icon: BarChart3,
+      title: "DTM & DSM",
+      subtitle: "Model Elevasi Digital",
+      description: "Representasi permukaan tanah (Terrain) dan objek di atasnya (Surface) dalam format digital 3D untuk analisis hidrologi dan topografi.",
+      features: [
+        "Model permukaan 3D",
+        "Analisis aliran air",
+      ],
+      stat: "3D",
+      statLabel: "Pemodelan",
+    },
+    {
+      icon: Box,
+      title: "Perhitungan Cut & Fill",
+      subtitle: "Estimasi Volume Tanah",
+      description: "Analisis perhitungan volume galian dan timbunan tanah secara detail berdasarkan perbandingan data topografi.",
+      features: [
+        "Mendukung perencanaan alat berat",
+        "Optimalisasi RAB proyek",
+      ],
+      stat: "±5%",
+      statLabel: "Toleransi Volume",
+    },
+    {
+      icon: FileText,
+      title: "Long & Cross Section",
+      subtitle: "Profil Elevasi Desain",
+      description: "Penyajian potongan memanjang dan melintang permukaan tanah untuk keperluan desain jalan, saluran, atau bendungan.",
+      features: [
+        "Estimasi pekerjaan tanah",
+        "Desain kemiringan aman",
+      ],
+      stat: "1:100",
+      statLabel: "Skala Standar",
+    },
+  ];
+
+  return (
+    <section id="outputs" className="py-24 bg-slate-900 text-white relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#10b981 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
+      <div className="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-emerald-600 blur-[120px] opacity-20"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center space-x-2 bg-slate-800 border border-slate-700 px-4 py-2 rounded-full mb-6">
+            <span className="text-sm font-medium text-emerald-400">Deliverables</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Standar Output Berkualitas Tinggi
+          </h2>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            Kami memastikan setiap data yang dihasilkan diolah menggunakan perangkat lunak mutakhir untuk memberikan tingkat akurasi sesuai toleransi SNI.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {outputs.map((output, index) => (
+            <div 
+              key={index} 
+              className={`bg-slate-800/50 backdrop-blur-sm border border-slate-700 p-8 rounded-2xl flex flex-col h-full ${index === outputs.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+            >
+              <div className="flex justify-between items-start mb-6">
+                <div className="bg-emerald-500/20 p-3 rounded-xl border border-emerald-500/30">
+                  <output.icon className="h-6 w-6 text-emerald-400" />
+                </div>
+                {output.stat && (
+                  <div className="text-right">
+                    <div className="text-xl font-bold text-white">{output.stat}</div>
+                    <div className="text-xs text-slate-400">{output.statLabel}</div>
+                  </div>
+                )}
+              </div>
+              
+              <div className="flex-1">
+                <h3 className="text-xl font-bold mb-1">{output.title}</h3>
+                <p className="text-emerald-400 text-sm mb-4">{output.subtitle}</p>
+                <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                  {output.description}
+                </p>
+              </div>
+              
+              <div className="mt-auto border-t border-slate-700 pt-4 space-y-2">
+                {output.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-start">
+                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-xs text-slate-300">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
