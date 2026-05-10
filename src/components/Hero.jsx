@@ -13,15 +13,15 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-slate-900"
+      className="relative h-[100dvh] flex items-center justify-center pt-20 overflow-hidden bg-slate-900"
     >
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0">
         <div
-          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center bg-no-repeat opacity-40 mix-blend-luminosity"
+          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center bg-no-repeat opacity-60 mix-blend-luminosity"
         />
         {/* Gradient Overlay for Readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/60 to-slate-900" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-800/60 via-slate-800/40 to-slate-900" />
 
         {/* Technical Grid Pattern Overlay */}
         <div
@@ -102,7 +102,7 @@ export default function Hero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer z-20" onClick={() => scrollToSection("about")}>
+      <div className="hidden md:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer z-20" onClick={() => scrollToSection("about")}>
         <div className="flex flex-col items-center text-slate-400 hover:text-emerald-400 transition-colors">
           <span className="text-xs uppercase tracking-widest mb-2 font-mono">Scroll</span>
           <ChevronDown className="h-6 w-6" />
