@@ -7,28 +7,28 @@ export default function Portfolio() {
       location: "Sumatera Utara",
       technology: "LIDAR",
       description: "Pemetaan Topografi di Sungai Bilah untuk akses mobilitas pembangunan bendungan PLTA sepanjang 9 km.",
-      image: "https://images.unsplash.com/photo-1541888086425-d81bb19240f5?auto=format&fit=crop&q=80&w=800", // Dam / river infrastructure
+      image: "https://images.unsplash.com/photo-1503708928676-1cb796a0891e?auto=format&fit=crop&q=80&w=800", // Surveyor/Mapping (Working)
     },
     {
       title: "Bendungan Seblat",
       location: "Bengkulu",
       technology: "LIDAR & Terestris",
       description: "Pembuatan Long & Cross Section serta Peta Topografi Bendungan di Seblat.",
-      image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&q=80&w=800", // Infrastructure/Construction
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800", // Tech/Scanning (Working)
     },
     {
       title: "Jalan Nasional Langsa-Aceh",
       location: "Aceh",
       technology: "LIDAR UAV",
       description: "Pembuatan Long & Cross Section Jalan Nasional 43 km pasca bencana Banjir Aceh.",
-      image: "https://images.unsplash.com/photo-1468818463283-f365319cd757?auto=format&fit=crop&q=80&w=800", // Highway / Road aerial
+      image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=800", // Aerial Road (From Hero)
     },
     {
       title: "Sungai Irigasi Bengkulu Selatan",
       location: "Bengkulu Selatan",
       technology: "UAV Photogrammetry",
       description: "Dokumentasi Sungai Irigasi untuk perencanaan jalur aliran irigasi lahan pertanian wilayah setempat.",
-      image: "https://images.unsplash.com/photo-1628186259063-4fb4fa5427eb?auto=format&fit=crop&q=80&w=800", // River / Irrigation
+      image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800", // GIS/Map (From Services)
     },
   ];
 
