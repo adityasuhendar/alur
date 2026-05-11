@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Map } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -19,15 +18,13 @@ export default function Footer() {
           
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="bg-emerald-600 p-2 rounded-lg">
-                <Map className="h-6 w-6 text-white" />
-              </div>
+              <img src="/logo.png" alt="PT Jentayu Geosurvey" className="h-10 w-10 object-contain" />
               <div>
-                <span className="font-bold text-lg block text-white">
+                <span className="font-bold text-lg block text-white tracking-wide" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
                   PT JENTAYU
                 </span>
-                <span className="text-xs tracking-widest block text-emerald-400">
-                  GEOSURVEY
+                <span className="text-[10px] tracking-[0.25em] block text-slate-400">
+                  GEO SURVEY
                 </span>
               </div>
             </div>

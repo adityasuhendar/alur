@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Map, Phone, ChevronDown } from "lucide-react";
+import { Phone, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -58,15 +58,13 @@ export default function Navbar() {
             className="flex items-center space-x-3 cursor-pointer group"
             onClick={() => scrollToSection("hero")}
           >
-            <div className="relative bg-emerald-600 p-2 rounded-lg">
-              <Map className="h-6 w-6 text-white" />
-            </div>
+            <img src="/logo.png" alt="PT Jentayu Geosurvey" className="h-10 w-10 object-contain" />
             <div>
-              <span className={`font-bold text-lg block transition-colors ${scrolled ? 'text-white' : 'text-white drop-shadow-md'}`}>
+              <span className={`font-bold text-lg block transition-colors tracking-wide ${scrolled ? 'text-white' : 'text-white drop-shadow-md'}`} style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
                 PT JENTAYU
               </span>
-              <span className={`text-xs tracking-widest block transition-colors ${scrolled ? 'text-emerald-400' : 'text-emerald-400 drop-shadow-md'}`}>
-                GEOSURVEY
+              <span className={`text-[10px] tracking-[0.25em] block transition-colors ${scrolled ? 'text-slate-400' : 'text-slate-300 drop-shadow-md'}`}>
+                GEO SURVEY
               </span>
             </div>
           </div>
