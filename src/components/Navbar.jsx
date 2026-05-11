@@ -76,7 +76,7 @@ export default function Navbar() {
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeSection === item.id
-                  ? "text-sky-400"
+                  ? "text-blue-400"
                   : scrolled ? "text-slate-300 hover:text-white hover:bg-slate-800/50" : "text-white/90 hover:text-white hover:bg-white/10"
                   }`}
               >
@@ -94,7 +94,7 @@ export default function Navbar() {
             <div className="ml-4 pl-4 border-l border-slate-700">
               <button
                 onClick={() => scrollToSection("contact")}
-                className="bg-blue-600 hover:bg-sky-500 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2 active:scale-[0.97]"
+                className="bg-blue-600 hover:bg-slate-500 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2 active:scale-[0.97]"
               >
                 <Phone className="w-4 h-4" />
                 Hubungi Kami
@@ -144,7 +144,7 @@ export default function Navbar() {
                   transition={{ duration: 0.3, delay: index * 0.06 }}
                   onClick={() => scrollToSection(item.id)}
                   className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all ${activeSection === item.id
-                    ? "bg-slate-800 text-sky-400"
+                    ? "bg-slate-800 text-blue-400"
                     : "text-slate-300 hover:bg-slate-800 hover:text-white"
                     }`}
                 >
@@ -156,7 +156,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: navItems.length * 0.06 }}
                 onClick={() => scrollToSection("contact")}
-                className="mt-4 block w-full text-center bg-blue-600 hover:bg-sky-500 text-white px-4 py-3 rounded-lg font-medium transition-colors"
+                className="mt-4 block w-full text-center bg-blue-600 hover:bg-slate-500 text-white px-4 py-3 rounded-lg font-medium transition-colors"
               >
                 Hubungi Kami
               </motion.button>

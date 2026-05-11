@@ -39,7 +39,7 @@ export default function About() {
               Tentang PT Jentayu Geosurvey
             </h2>
           </FadeLeft>
-          <AnimatedLine className="w-20 h-1 bg-sky-500 rounded mb-8" delay={0.4} />
+          <AnimatedLine className="w-20 h-1 bg-slate-500 rounded mb-8" delay={0.4} />
           <FadeUp delay={0.2}>
             <p className="text-lg text-slate-600 max-w-3xl leading-relaxed">
               Menjadi perusahaan berbasis spasial berskala nasional dengan komitmen pada presisi dan akurasi tinggi untuk mendukung perencanaan tata ruang, infrastruktur, dan pengembangan wilayah di Indonesia.
@@ -57,7 +57,7 @@ export default function About() {
             >
               <div className="flex items-center mb-6">
                 <div className="bg-slate-900 p-3 rounded-lg mr-4">
-                  <Target className="h-6 w-6 text-sky-400" />
+                  <Target className="h-6 w-6 text-blue-400" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900">Visi Kami</h3>
               </div>
@@ -76,7 +76,7 @@ export default function About() {
             >
               <div className="flex items-center mb-6">
                 <div className="bg-slate-900 p-3 rounded-lg mr-4">
-                  <TrendingUp className="h-6 w-6 text-sky-400" />
+                  <TrendingUp className="h-6 w-6 text-blue-400" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900">Misi Kami</h3>
               </div>
@@ -100,7 +100,7 @@ export default function About() {
                     }}
                     className="flex items-start text-slate-600"
                   >
-                    <CheckCircle className="h-6 w-6 text-sky-500 mr-3 flex-shrink-0" />
+                    <CheckCircle className="h-6 w-6 text-blue-500 mr-3 flex-shrink-0" />
                     <span className="text-lg">{item}</span>
                   </motion.li>
                 ))}
@@ -122,7 +122,7 @@ export default function About() {
                 whileHover={{ y: -6, transition: { duration: 0.25 } }}
                 className="bg-slate-50 p-8 rounded-xl shadow-sm border border-slate-100 group"
               >
-                <div className="bg-slate-50 w-14 h-14 rounded-lg flex items-center justify-center mb-6 group-hover:bg-sky-50 transition-colors">
+                <div className="bg-slate-50 w-14 h-14 rounded-lg flex items-center justify-center mb-6 group-hover:bg-slate-50 transition-colors">
                   <adv.icon className="h-7 w-7 text-slate-700 group-hover:text-blue-600 transition-colors" />
                 </div>
                 <h4 className="text-xl font-bold text-slate-900 mb-3">{adv.title}</h4>

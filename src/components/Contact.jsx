@@ -17,7 +17,7 @@ export default function Contact() {
                 Mari Bekerjasama
               </h2>
             </FadeLeft>
-            <AnimatedLine className="w-20 h-1 bg-sky-500 rounded mb-8" delay={0.3} />
+            <AnimatedLine className="w-20 h-1 bg-slate-500 rounded mb-8" delay={0.3} />
             <FadeUp delay={0.2}>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed">
                 Diskusikan kebutuhan proyek Anda dengan tim ahli kami. Kami siap memberikan solusi pemetaan yang presisi, efisien, dan andal untuk menunjang kesuksesan proyek Anda.
@@ -54,7 +54,7 @@ export default function Contact() {
                   }}
                   className="flex items-start group"
                 >
-                  <div className="bg-slate-50 w-12 h-12 rounded-lg flex items-center justify-center mr-4 shrink-0 group-hover:bg-sky-50 transition-colors">
+                  <div className="bg-slate-50 w-12 h-12 rounded-lg flex items-center justify-center mr-4 shrink-0 group-hover:bg-slate-50 transition-colors">
                     <item.icon className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
@@ -81,7 +81,7 @@ export default function Contact() {
                   <label className="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap</label>
                   <input 
                     type="text" 
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                     placeholder="Masukkan nama Anda"
                   />
                 </div>
@@ -90,7 +90,7 @@ export default function Contact() {
                     <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
                     <input 
                       type="email" 
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                       placeholder="nama@email.com"
                     />
                   </div>
@@ -98,7 +98,7 @@ export default function Contact() {
                     <label className="block text-sm font-medium text-slate-700 mb-1">No. HP</label>
                     <input 
                       type="tel" 
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                       placeholder="0812..."
                     />
                   </div>
@@ -107,7 +107,7 @@ export default function Contact() {
                   <label className="block text-sm font-medium text-slate-700 mb-1">Pesan / Detail Proyek</label>
                   <textarea 
                     rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"
                     placeholder="Deskripsikan kebutuhan survei Anda..."
                   ></textarea>
                 </div>
@@ -115,7 +115,7 @@ export default function Contact() {
                   type="button"
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-blue-600 hover:bg-sky-500 text-white font-bold py-3.5 px-4 rounded-lg flex items-center justify-center transition-colors"
+                  className="w-full bg-blue-600 hover:bg-slate-500 text-white font-bold py-3.5 px-4 rounded-lg flex items-center justify-center transition-colors"
                 >
                   <Send className="w-5 h-5 mr-2" />
                   Kirim Pesan
