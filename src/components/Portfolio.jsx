@@ -47,7 +47,7 @@ export default function Portfolio() {
                 Pengalaman Proyek Kami
               </h2>
             </FadeLeft>
-            <AnimatedLine className="w-20 h-1 bg-emerald-500 rounded mb-6" />
+            <AnimatedLine className="w-20 h-1 bg-sky-500 rounded mb-6" />
             <FadeUp delay={0.2}>
               <p className="text-lg text-slate-600">
                 Berikut adalah beberapa proyek besar yang telah kami selesaikan dengan tingkat kepuasan klien yang tinggi, mendukung infrastruktur nasional di berbagai daerah.
@@ -73,7 +73,7 @@ export default function Portfolio() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
-                  <div className="flex items-center space-x-2 text-emerald-400 text-sm mb-2 font-medium">
+                  <div className="flex items-center space-x-2 text-sky-400 text-sm mb-2 font-medium">
                     <MapPin className="w-4 h-4" />
                     <span>{project.location}</span>
                   </div>

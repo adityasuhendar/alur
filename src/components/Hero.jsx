@@ -39,7 +39,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="inline-flex items-center space-x-2 bg-slate-800/40 border border-slate-700/50 px-4 py-2 rounded-md mb-8 backdrop-blur-md"
             >
-              <span className="text-sm font-semibold text-emerald-400 tracking-wider uppercase">Solusi Geospasial Nasional</span>
+              <span className="text-sm font-semibold text-sky-400 tracking-wider uppercase">Solusi Geospasial Nasional</span>
             </motion.div>
 
             <motion.h1
@@ -49,7 +49,7 @@ export default function Hero() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-4 lg:mb-6 leading-[1.1] tracking-tight"
             >
               Presisi dalam <br />
-              <span className="text-emerald-400">
+              <span className="text-sky-400">
                 Setiap Dimensi
               </span>
             </motion.h1>
@@ -71,7 +71,7 @@ export default function Hero() {
             >
               <button
                 onClick={() => scrollToSection("services")}
-                className="group bg-emerald-600 text-white px-8 py-3.5 rounded-md font-semibold hover:bg-emerald-500 transition-all flex items-center justify-center shadow-lg shadow-emerald-900/20 hover:shadow-xl hover:shadow-emerald-900/30 active:scale-[0.98]"
+                className="group bg-blue-600 text-white px-8 py-3.5 rounded-md font-semibold hover:bg-sky-500 transition-all flex items-center justify-center shadow-lg shadow-blue-900/20 hover:shadow-xl hover:shadow-blue-900/30 active:scale-[0.98]"
               >
                 Lihat Layanan Kami
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -126,12 +126,12 @@ export default function Hero() {
               >
                 {card.isMapCard ? (
                   <>
-                    <MapPin className="h-8 w-8 text-emerald-400 mb-3" />
+                    <MapPin className="h-8 w-8 text-sky-400 mb-3" />
                     <div className="text-white font-medium">Melayani Seluruh Indonesia</div>
                   </>
                 ) : (
                   <>
-                    <div className="text-emerald-400 font-semibold text-sm mb-1 uppercase tracking-wider">{card.label}</div>
+                    <div className="text-sky-400 font-semibold text-sm mb-1 uppercase tracking-wider">{card.label}</div>
                     <div className="text-4xl font-bold text-white mb-2">{card.value}</div>
                     <p className="text-slate-400 text-sm leading-relaxed">{card.desc}</p>
                   </>
@@ -153,7 +153,7 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-col items-center text-slate-400 hover:text-emerald-400 transition-colors"
+          className="flex flex-col items-center text-slate-400 hover:text-sky-400 transition-colors"
         >
           <span className="text-xs uppercase tracking-widest mb-2 font-mono">Scroll</span>
           <ChevronDown className="h-6 w-6" />

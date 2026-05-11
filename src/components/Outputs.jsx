@@ -71,13 +71,13 @@ export default function Outputs() {
   return (
     <section id="outputs" className="py-24 bg-white relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-emerald-100 blur-[120px] opacity-60"></div>
+      <div className="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-sky-100 blur-[120px] opacity-60"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <FadeUp>
-            <div className="inline-flex items-center space-x-2 bg-emerald-50 border border-emerald-100 px-4 py-2 rounded-full mb-6">
-              <span className="text-sm font-medium text-emerald-600">Deliverables</span>
+            <div className="inline-flex items-center space-x-2 bg-sky-50 border border-sky-100 px-4 py-2 rounded-full mb-6">
+              <span className="text-sm font-medium text-blue-600">Deliverables</span>
             </div>
           </FadeUp>
           <FadeUp delay={0.1}>
@@ -98,14 +98,14 @@ export default function Outputs() {
               key={index}
               variants={staggerChildVariants}
               whileHover={{ y: -5, transition: { duration: 0.25 } }}
-              className={`bg-white border border-slate-200 p-8 rounded-2xl flex flex-col h-full shadow-sm hover:shadow-lg hover:border-emerald-200/60 transition-all ${index === outputs.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}
+              className={`bg-white border border-slate-200 p-8 rounded-2xl flex flex-col h-full shadow-sm hover:shadow-lg hover:border-sky-200/60 transition-all ${index === outputs.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}
             >
               <div className="flex justify-between items-start mb-6">
                 <motion.div
                   whileHover={{ rotate: [0, -8, 8, 0], transition: { duration: 0.5 } }}
-                  className="bg-emerald-50 p-3 rounded-xl border border-emerald-100"
+                  className="bg-sky-50 p-3 rounded-xl border border-sky-100"
                 >
-                  <output.icon className="h-6 w-6 text-emerald-600" />
+                  <output.icon className="h-6 w-6 text-blue-600" />
                 </motion.div>
                 {output.stat && (
                   <div className="text-right">
@@ -117,7 +117,7 @@ export default function Outputs() {
 
               <div className="flex-1">
                 <h3 className="text-xl font-bold text-slate-900 mb-1">{output.title}</h3>
-                <p className="text-emerald-600 font-medium text-sm mb-4">{output.subtitle}</p>
+                <p className="text-blue-600 font-medium text-sm mb-4">{output.subtitle}</p>
                 <p className="text-slate-600 text-sm leading-relaxed mb-6">
                   {output.description}
                 </p>
@@ -126,7 +126,7 @@ export default function Outputs() {
               <div className="mt-auto border-t border-slate-100 pt-4 space-y-2">
                 {output.features.map((feature, idx) => (
                   <div key={idx} className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-emerald-500 mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="h-4 w-4 text-sky-500 mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-xs text-slate-600">{feature}</span>
                   </div>
                 ))}

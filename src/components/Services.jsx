@@ -60,7 +60,7 @@ export default function Services() {
               Layanan Service
             </h2>
           </FadeUp>
-          <AnimatedLine className="w-20 h-1 bg-emerald-500 rounded mx-auto mb-6" />
+          <AnimatedLine className="w-20 h-1 bg-sky-500 rounded mx-auto mb-6" />
           <FadeUp delay={0.15}>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Solusi pemetaan dan survei komprehensif yang disesuaikan dengan standar industri dan kebutuhan spesifik proyek Anda.
@@ -74,13 +74,13 @@ export default function Services() {
               key={index}
               variants={staggerChildVariants}
               whileHover={{ y: -4, transition: { duration: 0.25 } }}
-              className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 hover:shadow-xl hover:border-emerald-500/30 transition-all group relative overflow-hidden flex flex-col sm:flex-row gap-6 items-start"
+              className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 hover:shadow-xl hover:border-sky-500/30 transition-all group relative overflow-hidden flex flex-col sm:flex-row gap-6 items-start"
             >
               {/* Decorative left border */}
-              <div className="absolute top-0 bottom-0 left-0 w-1.5 bg-gradient-to-b from-emerald-400 to-teal-500 transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top" />
+              <div className="absolute top-0 bottom-0 left-0 w-1.5 bg-gradient-to-b from-sky-400 to-blue-500 transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top" />
 
               <div className="flex-shrink-0">
-                <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-slate-50 shadow-sm group-hover:border-emerald-50 transition-colors relative">
+                <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-slate-50 shadow-sm group-hover:border-sky-50 transition-colors relative">
                   <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors" />
                 </div>
@@ -88,7 +88,7 @@ export default function Services() {
 
               <div className="flex-1">
                 <div className="flex items-center mb-3">
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
                     {service.title}
                   </h3>
                 </div>
@@ -101,7 +101,7 @@ export default function Services() {
                   {service.features.map((feature, idx) => (
                     <span
                       key={idx}
-                      className="text-xs font-medium bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors"
+                      className="text-xs font-medium bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md group-hover:bg-sky-50 group-hover:text-blue-700 transition-colors"
                     >
                       {feature}
                     </span>
