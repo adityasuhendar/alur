@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Map } from "lucide-react";
 
 export default function Footer() {
@@ -6,7 +9,13 @@ export default function Footer() {
   return (
     <footer className="bg-slate-900 border-t border-slate-800 pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          className="grid md:grid-cols-4 gap-12 mb-12"
+        >
           
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
@@ -53,9 +62,15 @@ export default function Footer() {
             </ul>
           </div>
           
-        </div>
+        </motion.div>
 
-        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
           <p className="text-slate-500 text-sm mb-4 md:mb-0">
             &copy; {currentYear} PT Jentayu Geosurvey. All rights reserved.
           </p>
@@ -63,7 +78,7 @@ export default function Footer() {
             <a href="#" className="text-slate-500 hover:text-white transition-colors text-sm">Privacy Policy</a>
             <a href="#" className="text-slate-500 hover:text-white transition-colors text-sm">Terms of Service</a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

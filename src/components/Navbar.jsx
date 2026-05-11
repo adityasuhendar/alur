@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Map, Phone, ChevronDown } from "lucide-react";
 
 export default function Navbar() {
@@ -47,8 +48,8 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-800"
-          : "bg-transparent"
+        ? "bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-800"
+        : "bg-transparent"
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,10 +62,10 @@ export default function Navbar() {
               <Map className="h-6 w-6 text-white" />
             </div>
             <div>
-              <span className={`font-bold text-lg block transition-colors ${scrolled ? 'text-white' : 'text-slate-900 drop-shadow-md lg:text-white'}`}>
+              <span className={`font-bold text-lg block transition-colors ${scrolled ? 'text-white' : 'text-white drop-shadow-md'}`}>
                 PT JENTAYU
               </span>
-              <span className={`text-xs tracking-widest block transition-colors ${scrolled ? 'text-emerald-400' : 'text-emerald-600 drop-shadow-md lg:text-emerald-400'}`}>
+              <span className={`text-xs tracking-widest block transition-colors ${scrolled ? 'text-emerald-400' : 'text-emerald-400 drop-shadow-md'}`}>
                 GEOSURVEY
               </span>
             </div>
@@ -76,19 +77,26 @@ export default function Navbar() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeSection === item.id
-                    ? "text-emerald-400 bg-slate-800/50"
-                    : scrolled ? "text-slate-300 hover:text-white hover:bg-slate-800/50" : "text-white/90 hover:text-white hover:bg-white/10"
+                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all ${activeSection === item.id
+                  ? "text-emerald-400"
+                  : scrolled ? "text-slate-300 hover:text-white hover:bg-slate-800/50" : "text-white/90 hover:text-white hover:bg-white/10"
                   }`}
               >
                 {item.label}
+                {activeSection === item.id && (
+                  <motion.div
+                    layoutId="activeNavIndicator"
+                    className="absolute inset-0 bg-slate-800/50 rounded-lg -z-10"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
               </button>
             ))}
 
             <div className="ml-4 pl-4 border-l border-slate-700">
               <button
                 onClick={() => scrollToSection("contact")}
-                className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2"
+                className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-colors flex items-center gap-2 active:scale-[0.97]"
               >
                 <Phone className="w-4 h-4" />
                 Hubungi Kami
@@ -99,19 +107,19 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-white hover:bg-slate-800' : 'text-slate-900 hover:bg-white/20'}`}
+            className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-white hover:bg-slate-800' : 'text-white hover:bg-white/20'}`}
           >
             <div className="relative w-6 h-6">
               <span
-                className={`absolute w-6 h-0.5 transition-all ${scrolled || mobileMenuOpen ? 'bg-white' : 'bg-slate-900'} ${mobileMenuOpen ? "top-3 rotate-45" : "top-1"
+                className={`absolute w-6 h-0.5 transition-all duration-300 bg-white ${mobileMenuOpen ? "top-3 rotate-45" : "top-1"
                   }`}
               />
               <span
-                className={`absolute w-6 h-0.5 transition-all ${scrolled || mobileMenuOpen ? 'bg-white' : 'bg-slate-900'} ${mobileMenuOpen ? "opacity-0" : "top-3"
+                className={`absolute w-6 h-0.5 transition-all duration-300 bg-white ${mobileMenuOpen ? "opacity-0" : "top-3"
                   }`}
               />
               <span
-                className={`absolute w-6 h-0.5 transition-all ${scrolled || mobileMenuOpen ? 'bg-white' : 'bg-slate-900'} ${mobileMenuOpen ? "top-3 -rotate-45" : "top-5"
+                className={`absolute w-6 h-0.5 transition-all duration-300 bg-white ${mobileMenuOpen ? "top-3 -rotate-45" : "top-5"
                   }`}
               />
             </div>
@@ -119,31 +127,45 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-slate-900 border-t border-slate-800">
-          <div className="px-4 py-4 space-y-2">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all ${activeSection === item.id
+      {/* Mobile Menu Dropdown — smooth animated */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+            className="lg:hidden bg-slate-900 border-t border-slate-800 overflow-hidden"
+          >
+            <div className="px-4 py-4 space-y-2">
+              {navItems.map((item, index) => (
+                <motion.button
+                  key={item.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.06 }}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all ${activeSection === item.id
                     ? "bg-slate-800 text-emerald-400"
                     : "text-slate-300 hover:bg-slate-800 hover:text-white"
-                  }`}
+                    }`}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+              <motion.button
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.3, delay: navItems.length * 0.06 }}
+                onClick={() => scrollToSection("contact")}
+                className="mt-4 block w-full text-center bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-3 rounded-lg font-medium transition-colors"
               >
-                {item.label}
-              </button>
-            ))}
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="mt-4 block w-full text-center bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-3 rounded-lg font-medium transition-colors"
-            >
-              Hubungi Kami
-            </button>
-          </div>
-        </div>
-      )}
+                Hubungi Kami
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

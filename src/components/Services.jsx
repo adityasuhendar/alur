@@ -1,4 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Satellite, Compass, FileCheck, Scan, Eye, Database } from "lucide-react";
+import { FadeUp, StaggerContainer, staggerChildVariants, AnimatedLine } from "./MotionWrapper";
 
 export default function Services() {
   const services = [
@@ -49,58 +53,64 @@ export default function Services() {
   return (
     <section id="services" className="py-24 bg-slate-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Layanan Service
-          </h2>
-          <div className="w-20 h-1 bg-emerald-500 rounded mx-auto mb-6"></div>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Solusi pemetaan dan survei komprehensif yang disesuaikan dengan standar industri dan kebutuhan spesifik proyek Anda.
-          </p>
+          <FadeUp>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Layanan Service
+            </h2>
+          </FadeUp>
+          <AnimatedLine className="w-20 h-1 bg-emerald-500 rounded mx-auto mb-6" />
+          <FadeUp delay={0.15}>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              Solusi pemetaan dan survei komprehensif yang disesuaikan dengan standar industri dan kebutuhan spesifik proyek Anda.
+            </p>
+          </FadeUp>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <StaggerContainer className="grid lg:grid-cols-2 gap-8" staggerDelay={0.1}>
           {services.map((service, index) => (
-            <div 
-              key={index} 
+            <motion.div
+              key={index}
+              variants={staggerChildVariants}
+              whileHover={{ y: -4, transition: { duration: 0.25 } }}
               className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 hover:shadow-xl hover:border-emerald-500/30 transition-all group relative overflow-hidden flex flex-col sm:flex-row gap-6 items-start"
             >
               {/* Decorative left border */}
-              <div className="absolute top-0 bottom-0 left-0 w-1.5 bg-gradient-to-b from-emerald-400 to-teal-500 transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></div>
-              
+              <div className="absolute top-0 bottom-0 left-0 w-1.5 bg-gradient-to-b from-emerald-400 to-teal-500 transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top" />
+
               <div className="flex-shrink-0">
                 <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-slate-50 shadow-sm group-hover:border-emerald-50 transition-colors relative">
                   <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors"></div>
+                  <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors" />
                 </div>
               </div>
-              
+
               <div className="flex-1">
                 <div className="flex items-center mb-3">
                   <h3 className="text-xl font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
                     {service.title}
                   </h3>
                 </div>
-                
+
                 <p className="text-slate-600 text-sm leading-relaxed mb-6">
                   {service.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {service.features.map((feature, idx) => (
-                    <span 
-                      key={idx} 
-                      className="text-xs font-medium bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md"
+                    <span
+                      key={idx}
+                      className="text-xs font-medium bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors"
                     >
                       {feature}
                     </span>
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </StaggerContainer>
 
       </div>
     </section>
