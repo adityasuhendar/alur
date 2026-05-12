@@ -34,6 +34,20 @@ export default function Portfolio() {
       description: "Dokumentasi Sungai Irigasi untuk perencanaan jalur aliran irigasi lahan pertanian wilayah setempat.",
       image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800",
     },
+    {
+      title: "Pemotretan Drone PUNA untuk PTSL",
+      location: "Kab. Mukomuko, Kepahiang, Seluma, Rejang Lebong & Kaur — Bengkulu",
+      technology: "Drone PUNA",
+      description: "Pemotretan udara menggunakan Drone PUNA untuk mendukung program Pendaftaran Tanah Sistematis Lengkap (PTSL) di lima kabupaten wilayah Provinsi Bengkulu.",
+      image: "https://images.unsplash.com/photo-1508444845599-5c89863b1c44?auto=format&fit=crop&q=80&w=800",
+    },
+    {
+      title: "Survei LIDAR Jalan Tambang",
+      location: "Sulawesi Selatan",
+      technology: "LIDAR",
+      description: "Survei LIDAR untuk perencanaan dan pembukaan akses jalan tambang, menghasilkan data topografi presisi tinggi sebagai dasar desain trase jalan di wilayah Sulawesi Selatan.",
+      image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=800",
+    },
   ];
 
   return (
