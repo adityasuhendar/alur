@@ -29,17 +29,17 @@ export default function Contact() {
                 {
                   icon: MapPin,
                   title: "Kantor Pusat",
-                  content: "Jl. Contoh Alamat No. 123, Kelurahan, Kecamatan, Kota, Provinsi 12345",
+                  content: "Griya Sukarame Blok B No.5, Sukarame, Kota Bandar Lampung, Provinsi Lampung",
                 },
                 {
                   icon: Phone,
                   title: "Telepon / WhatsApp",
-                  content: "+62 812-3456-7890",
+                  content: "081369162467",
                 },
                 {
                   icon: Mail,
                   title: "Email",
-                  content: "info@jentayugeosurvey.com",
+                  content: "ptjentayugeosurvey@gmail.com",
                 },
               ].map((item, index) => (
                 <motion.div
