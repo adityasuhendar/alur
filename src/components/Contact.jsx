@@ -1,10 +1,42 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { FadeLeft, FadeRight, FadeUp, AnimatedLine } from "./MotionWrapper";
 
 export default function Contact() {
+  const [form, setForm] = useState({ nama: "", email: "", hp: "", pesan: "" });
+
+  const handleChange = (e) => {
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Format pesan WhatsApp
+    const message = `Halo, saya ingin konsultasi mengenai jasa survei Anda.
+
+*Nama:* ${form.nama}
+*Email:* ${form.email}
+*No. HP:* ${form.hp}
+
+*Pesan/Detail Proyek:*
+${form.pesan}
+
+Terima kasih.`;
+
+    // Nomor WhatsApp tujuan (62 untuk Indonesia)
+    const phoneNumber = "6281369162467";
+
+    // Buat URL WhatsApp
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    // Buka WhatsApp di tab baru
+    window.open(whatsappUrl, "_blank");
+  };
+
   return (
     <section id="contact" className="py-24 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,7 +66,7 @@ export default function Contact() {
                 {
                   icon: Phone,
                   title: "Telepon / WhatsApp",
-                  content: "081369162467",
+                  content: "+6281369162467",
                 },
                 {
                   icon: Mail,
@@ -76,11 +108,15 @@ export default function Contact() {
               className="bg-slate-50 p-8 rounded-2xl border border-slate-200"
             >
               <h3 className="text-2xl font-bold text-slate-900 mb-6">Kirim Pesan</h3>
-              <form className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap</label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
+                    name="nama"
+                    value={form.nama}
+                    onChange={handleChange}
+                    required
                     className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                     placeholder="Masukkan nama Anda"
                   />
@@ -88,16 +124,24 @@ export default function Contact() {
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                    <input 
-                      type="email" 
+                    <input
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
                       className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                       placeholder="nama@email.com"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-1">No. HP</label>
-                    <input 
-                      type="tel" 
+                    <input
+                      type="tel"
+                      name="hp"
+                      value={form.hp}
+                      onChange={handleChange}
+                      required
                       className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
                       placeholder="0812..."
                     />
@@ -105,14 +149,18 @@ export default function Contact() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-700 mb-1">Pesan / Detail Proyek</label>
-                  <textarea 
+                  <textarea
+                    name="pesan"
+                    value={form.pesan}
+                    onChange={handleChange}
+                    required
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"
                     placeholder="Deskripsikan kebutuhan survei Anda..."
                   ></textarea>
                 </div>
-                <motion.button 
-                  type="button"
+                <motion.button
+                  type="submit"
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full bg-blue-600 hover:bg-slate-500 text-white font-bold py-3.5 px-4 rounded-lg flex items-center justify-center transition-colors"
