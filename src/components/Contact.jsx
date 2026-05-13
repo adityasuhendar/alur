@@ -117,7 +117,7 @@ Terima kasih.`;
                     value={form.nama}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-900"
                     placeholder="Masukkan nama Anda"
                   />
                 </div>
@@ -130,7 +130,7 @@ Terima kasih.`;
                       value={form.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-900"
                       placeholder="nama@email.com"
                     />
                   </div>
@@ -142,7 +142,7 @@ Terima kasih.`;
                       value={form.hp}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all text-slate-900"
                       placeholder="0812..."
                     />
                   </div>
@@ -155,7 +155,7 @@ Terima kasih.`;
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all resize-none text-slate-900"
                     placeholder="Deskripsikan kebutuhan survei Anda..."
                   ></textarea>
                 </div>
