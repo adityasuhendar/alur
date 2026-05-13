@@ -1,138 +1,160 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Map, Mountain, BarChart3, Box, FileText, CheckCircle } from "lucide-react";
-import { FadeUp, ScaleIn, StaggerContainer, staggerChildVariants } from "./MotionWrapper";
+import { Map, Mountain, BarChart3, Box, FileText, CheckCircle2 } from "lucide-react";
+import { FadeUp, StaggerContainer, staggerChildVariants } from "./MotionWrapper";
+
+const outputs = [
+  {
+    icon: Map,
+    number: "01",
+    title: "Orthophoto",
+    subtitle: "Citra Udara Presisi",
+    description:
+      "Citra udara yang telah terkoreksi secara geometrik sehingga skala seragam dan setiap objek berada pada posisi koordinat sebenarnya.",
+    features: ["Akurasi tinggi untuk pengukuran jarak & luas", "Efektif untuk monitoring progres proyek"],
+    stat: "99.9%",
+    statLabel: "Akurasi",
+  },
+  {
+    icon: Mountain,
+    number: "02",
+    title: "Peta Kontur Digital",
+    subtitle: "Dasar Perencanaan Lahan",
+    description:
+      "Penyajian informasi elevasi dan relief permukaan tanah secara presisi sebagai fondasi data untuk perencanaan konstruksi.",
+    features: ["Visualisasi relief lahan yang jelas", "Mengurangi risiko kesalahan desain"],
+    stat: "0.5m",
+    statLabel: "Interval Kontur",
+  },
+  {
+    icon: BarChart3,
+    number: "03",
+    title: "DTM & DSM",
+    subtitle: "Model Elevasi Digital",
+    description:
+      "Representasi permukaan tanah dan objek di atasnya dalam format digital 3D untuk analisis hidrologi dan topografi.",
+    features: ["Model permukaan 3D yang detail", "Analisis aliran air & drainase"],
+    stat: "3D",
+    statLabel: "Pemodelan",
+  },
+  {
+    icon: Box,
+    number: "04",
+    title: "Cut & Fill",
+    subtitle: "Estimasi Volume Tanah",
+    description:
+      "Analisis perhitungan volume galian dan timbunan tanah secara detail berdasarkan perbandingan data topografi.",
+    features: ["Mendukung perencanaan alat berat", "Optimalisasi RAB proyek"],
+    stat: "±5%",
+    statLabel: "Toleransi Volume",
+  },
+  {
+    icon: FileText,
+    number: "05",
+    title: "Long & Cross Section",
+    subtitle: "Profil Elevasi Desain",
+    description:
+      "Potongan memanjang dan melintang permukaan tanah untuk keperluan desain jalan, saluran, atau bendungan.",
+    features: ["Estimasi pekerjaan tanah presisi", "Desain kemiringan aman"],
+    stat: "1:100",
+    statLabel: "Skala Standar",
+  },
+];
 
 export default function Outputs() {
-  const outputs = [
-    {
-      icon: Map,
-      title: "Orthophoto",
-      subtitle: "Citra Udara Presisi",
-      description: "Citra udara yang telah terkoreksi secara geometrik sehingga skala seragam dan setiap objek berada pada posisi koordinat sebenarnya.",
-      features: [
-        "Akurasi tinggi untuk pengukuran jarak dan luas",
-        "Efektif untuk monitoring progres proyek",
-      ],
-      stat: "99.9%",
-      statLabel: "Akurasi Resolusi",
-    },
-    {
-      icon: Mountain,
-      title: "Peta Kontur Digital",
-      subtitle: "Dasar Perencanaan Lahan",
-      description: "Penyajian informasi elevasi dan relief permukaan tanah secara presisi sebagai fondasi data untuk perencanaan konstruksi.",
-      features: [
-        "Visualisasi relief lahan yang jelas",
-        "Mengurangi risiko kesalahan desain",
-      ],
-      stat: "0.5m",
-      statLabel: "Interval Kontur",
-    },
-    {
-      icon: BarChart3,
-      title: "DTM & DSM",
-      subtitle: "Model Elevasi Digital",
-      description: "Representasi permukaan tanah (Terrain) dan objek di atasnya (Surface) dalam format digital 3D untuk analisis hidrologi dan topografi.",
-      features: [
-        "Model permukaan 3D",
-        "Analisis aliran air",
-      ],
-      stat: "3D",
-      statLabel: "Pemodelan",
-    },
-    {
-      icon: Box,
-      title: "Perhitungan Cut & Fill",
-      subtitle: "Estimasi Volume Tanah",
-      description: "Analisis perhitungan volume galian dan timbunan tanah secara detail berdasarkan perbandingan data topografi.",
-      features: [
-        "Mendukung perencanaan alat berat",
-        "Optimalisasi RAB proyek",
-      ],
-      stat: "±5%",
-      statLabel: "Toleransi Volume",
-    },
-    {
-      icon: FileText,
-      title: "Long & Cross Section",
-      subtitle: "Profil Elevasi Desain",
-      description: "Penyajian potongan memanjang dan melintang permukaan tanah untuk keperluan desain jalan, saluran, atau bendungan.",
-      features: [
-        "Estimasi pekerjaan tanah",
-        "Desain kemiringan aman",
-      ],
-      stat: "1:100",
-      statLabel: "Skala Standar",
-    },
-  ];
-
   return (
     <section id="outputs" className="py-24 bg-white relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 -mr-40 -mt-40 w-96 h-96 rounded-full bg-blue-100 blur-[120px] opacity-60"></div>
+      {/* Subtle top-right blob */}
+      <div className="absolute top-0 right-0 w-[480px] h-[480px] rounded-full bg-blue-100/50 blur-[140px] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        {/* Header — left aligned like a startup */}
+        <div className="mb-14 max-w-2xl">
           <FadeUp>
-            <div className="inline-flex items-center space-x-2 bg-slate-50 border border-blue-100 px-4 py-2 rounded-full mb-6">
-              <span className="text-sm font-medium text-blue-600">Deliverables</span>
-            </div>
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-blue-600 mb-3 block">
+              Deliverables
+            </span>
           </FadeUp>
-          <FadeUp delay={0.1}>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Standar Output Berkualitas Tinggi
+          <FadeUp delay={0.08}>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 leading-tight mb-4">
+              Output standar SNI,<br />
+              <span className="text-slate-400 font-normal">siap pakai langsung.</span>
             </h2>
           </FadeUp>
-          <FadeUp delay={0.2}>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              Kami memastikan setiap data yang dihasilkan diolah menggunakan perangkat lunak mutakhir untuk memberikan tingkat akurasi sesuai toleransi SNI.
+          <FadeUp delay={0.14}>
+            <p className="text-slate-500 text-base leading-relaxed">
+              Setiap data diolah dengan perangkat lunak mutakhir dan melewati quality control ketat sebelum diserahkan ke klien.
             </p>
           </FadeUp>
         </div>
 
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.08}>
-          {outputs.map((output, index) => (
-            <motion.div
-              key={index}
-              variants={staggerChildVariants}
-              whileHover={{ y: -5, transition: { duration: 0.25 } }}
-              className={`bg-white border border-slate-200 p-8 rounded-2xl flex flex-col h-full shadow-sm hover:shadow-lg hover:border-blue-200/60 transition-all ${index === outputs.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''}`}
-            >
-              <div className="flex justify-between items-start mb-6">
-                <motion.div
-                  whileHover={{ rotate: [0, -8, 8, 0], transition: { duration: 0.5 } }}
-                  className="bg-slate-50 p-3 rounded-xl border border-blue-100"
+        {/* Bento grid — 2 featured + 3 smaller */}
+        <StaggerContainer
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-fr"
+          staggerDelay={0.07}
+        >
+          {outputs.map((output, index) => {
+            const Icon = output.icon;
+            /* First two cards span more height visually via extra padding */
+            const isFeatured = index < 2;
+
+            return (
+              <motion.div
+                key={index}
+                variants={staggerChildVariants}
+                whileHover={{ y: -4, transition: { duration: 0.22 } }}
+                className={`group relative bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden
+                  hover:border-blue-200 hover:shadow-xl hover:shadow-blue-50 transition-all duration-300
+                  flex flex-col
+                  ${isFeatured ? "p-8" : "p-7"}
+                `}
+              >
+                {/* Big ghost number — decorative */}
+                <span
+                  className="absolute -top-4 -right-2 text-[7rem] font-black text-slate-100 select-none leading-none
+                    group-hover:text-blue-50 transition-colors duration-300 pointer-events-none"
+                  aria-hidden="true"
                 >
-                  <output.icon className="h-6 w-6 text-blue-600" />
-                </motion.div>
-                {output.stat && (
+                  {output.number}
+                </span>
+
+                {/* Top row: icon + stat */}
+                <div className="relative flex items-start justify-between mb-6">
+                  <div className="bg-slate-50 border border-slate-100 p-2.5 rounded-xl group-hover:border-blue-100 group-hover:bg-blue-50/50 transition-all">
+                    <Icon className="h-5 w-5 text-slate-500 group-hover:text-blue-600 transition-colors" />
+                  </div>
                   <div className="text-right">
-                    <div className="text-xl font-bold text-slate-900">{output.stat}</div>
-                    <div className="text-xs text-slate-500">{output.statLabel}</div>
+                    <div className="text-2xl font-bold text-slate-900 tabular-nums leading-none">
+                      {output.stat}
+                    </div>
+                    <div className="text-[10px] font-medium text-slate-400 uppercase tracking-wide mt-0.5">
+                      {output.statLabel}
+                    </div>
                   </div>
-                )}
-              </div>
+                </div>
 
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-slate-900 mb-1">{output.title}</h3>
-                <p className="text-blue-600 font-medium text-sm mb-4">{output.subtitle}</p>
-                <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                  {output.description}
-                </p>
-              </div>
+                {/* Content */}
+                <div className="relative flex-1 flex flex-col">
+                  <p className="text-[10px] font-semibold tracking-widest uppercase text-blue-500 mb-1">
+                    {output.subtitle}
+                  </p>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">{output.title}</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed flex-1">{output.description}</p>
 
-              <div className="mt-auto border-t border-slate-100 pt-4 space-y-2">
-                {output.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-start">
-                    <CheckCircle className="h-4 w-4 text-blue-500 mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-xs text-slate-600">{feature}</span>
+                  {/* Features */}
+                  <div className="mt-5 pt-5 border-t border-slate-100 space-y-2">
+                    {output.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-blue-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-xs text-slate-500">{feature}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </StaggerContainer>
       </div>
     </section>
