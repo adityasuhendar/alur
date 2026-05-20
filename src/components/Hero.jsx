@@ -6,7 +6,7 @@ import { ArrowRight, ChevronDown, MapPin } from "lucide-react";
 
 const heroImages = [
   "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=2000",
-  "https://images.unsplash.com/photo-1503708928676-1cb796a0891e?auto=format&fit=crop&q=80&w=2000",
+  "/hero/2.jpg",
   "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000",
 ];
 

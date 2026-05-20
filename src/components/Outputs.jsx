@@ -110,76 +110,62 @@ export default function Outputs() {
         >
           {outputs.map((output, index) => {
             const Icon = output.icon;
-            /* First two cards span more height visually via extra padding */
-            const isFeatured = index < 2;
 
             return (
               <motion.div
                 key={index}
                 variants={staggerChildVariants}
                 whileHover={{ y: -4, transition: { duration: 0.22 } }}
-                className={`group relative bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden
-                  hover:border-blue-200 hover:shadow-xl hover:shadow-blue-50 transition-all duration-300
-                  flex flex-col
-                  ${isFeatured ? "p-8" : "p-7"}
-                `}
+                className="group relative h-80 rounded-2xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl transition-all"
+                onClick={() => setSelectedOutput(output)}
               >
-                {/* Big ghost number — decorative */}
-                <span
-                  className="absolute -top-4 -right-2 text-[7rem] font-black text-slate-100 select-none leading-none
-                    group-hover:text-blue-50 transition-colors duration-300 pointer-events-none"
-                  aria-hidden="true"
-                >
-                  {output.number}
-                </span>
+                {/* Background Image */}
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${output.image})` }}
+                />
 
-                {/* Image */}
-                <div
-                  className="relative h-32 -mx-8 -mt-8 mb-6 overflow-hidden rounded-t-2xl cursor-pointer"
-                  onClick={() => setSelectedOutput(output)}
-                >
-                  <motion.img
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.5 }}
-                    src={output.image}
-                    alt={output.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-                  <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors" />
-                </div>
-
-                {/* Top row: icon + stat */}
-                <div className="relative flex items-start justify-between mb-6">
-                  <div className="bg-slate-50 border border-slate-100 p-2.5 rounded-xl group-hover:border-blue-100 group-hover:bg-blue-50/50 transition-all">
-                    <Icon className="h-5 w-5 text-slate-500 group-hover:text-blue-600 transition-colors" />
-                  </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-slate-900 tabular-nums leading-none">
-                      {output.stat}
-                    </div>
-                    <div className="text-[10px] font-medium text-slate-400 uppercase tracking-wide mt-0.5">
-                      {output.statLabel}
-                    </div>
-                  </div>
-                </div>
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent" />
 
                 {/* Content */}
-                <div className="relative flex-1 flex flex-col">
-                  <p className="text-[10px] font-semibold tracking-widest uppercase text-blue-500 mb-1">
-                    {output.subtitle}
-                  </p>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{output.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed flex-1">{output.description}</p>
-
-                  {/* Features */}
-                  <div className="mt-5 pt-5 border-t border-slate-100 space-y-2">
-                    {output.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-2">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-blue-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-xs text-slate-500">{feature}</span>
+                <div className="relative h-full flex flex-col justify-between p-6">
+                  {/* Top row: icon + stat */}
+                  <div className="flex items-start justify-between">
+                    <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-2.5 rounded-xl">
+                      <Icon className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="text-right">
+                      <div className="text-2xl font-bold text-white tabular-nums leading-none">
+                        {output.stat}
                       </div>
-                    ))}
+                      <div className="text-[10px] font-medium text-white/70 uppercase tracking-wide mt-0.5">
+                        {output.statLabel}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom content */}
+                  <div>
+                    <p className="text-[10px] font-semibold tracking-widest uppercase text-blue-300 mb-1">
+                      {output.subtitle}
+                    </p>
+                    <h3 className="text-xl font-bold text-white mb-2">{output.title}</h3>
+                    <p className="text-white/80 text-sm leading-relaxed mb-4 line-clamp-2">
+                      {output.description}
+                    </p>
+
+                    {/* Features */}
+                    <div className="space-y-1.5">
+                      {output.features.slice(0, 2).map((feature, idx) => (
+                        <div key={idx} className="flex items-center gap-2">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-blue-300 flex-shrink-0" />
+                          <span className="text-xs text-white/90">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </motion.div>
