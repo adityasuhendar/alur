@@ -1,52 +1,61 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Satellite, Compass, FileCheck, Scan, Eye, Database } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Satellite, Compass, FileCheck, Scan, Eye, Database, X } from "lucide-react";
 import { FadeUp, StaggerContainer, staggerChildVariants, AnimatedLine } from "./MotionWrapper";
 
 export default function Services() {
+  const [selectedService, setSelectedService] = useState(null);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handler = (e) => { if (e.key === "Escape") setSelectedService(null); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
   const services = [
     {
       icon: Satellite,
       title: "Survei Foto Udara UAV",
       description: "Pemanfaatan survei foto udara untuk Perencanaan Wilayah dan Kota, serta Pemetaan area luas dengan presisi.",
       features: ["Resolusi Tinggi", "Pemetaan 3D", "Pemrosesan Cepat"],
-      image: "https://images.unsplash.com/photo-1579820010410-c10411aaaa88?auto=format&fit=crop&q=80&w=400",
+      image: "/layanan/uav.jpg",
     },
     {
       icon: Scan,
       title: "3D Laser Scanning",
       description: "Metode akuisisi data spasial yang efisien menggunakan laser scanning untuk menghasilkan model digital 3D objek as-built.",
       features: ["Point Cloud", "Pemodelan 3D", "As-Built"],
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400",
+      image: "/layanan/laser-scanning.jpg",
     },
     {
       icon: Compass,
       title: "Survei Terestris",
       description: "Pengukuran langsung di lapangan menggunakan peralatan berpresisi tinggi seperti Total Station, GNSS Geodetik, dan Waterpass.",
       features: ["Survei GPS", "Total Station", "Presisi Tinggi"],
-      image: "https://images.unsplash.com/photo-1503708928676-1cb796a0891e?auto=format&fit=crop&q=80&w=400",
+      image: "/layanan/terestris.jpg",
     },
     {
       icon: Eye,
       title: "Penginderaan Jauh",
       description: "Akuisisi dan analisis data dari jarak jauh tanpa kontak fisik dengan objek, menggunakan citra satelit atau radar.",
       features: ["Citra Satelit", "Analisis Spektral", "Monitoring"],
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=400",
+      image: "/layanan/penginderaan-jauh.jpg",
     },
     {
       icon: FileCheck,
       title: "Survei Kadaster",
       description: "Pengukuran batas kepemilikan tanah untuk membantu Badan Pertanahan Nasional dan keperluan legalitas tanah.",
       features: ["Survei Legal", "Penandaan Batas", "Sertifikasi"],
-      image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?auto=format&fit=crop&q=80&w=400",
+      image: "/layanan/kadaster.jpg",
     },
     {
       icon: Database,
       title: "Sistem Informasi Geografis",
       description: "Pengembangan sistem manajemen basis data untuk mengelola, menganalisis, dan memvisualisasikan informasi keruangan (spasial).",
       features: ["Analisis Spasial", "Manajemen Data", "WebGIS"],
-      image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=400",
+      image: "/layanan/gis.jpg",
     },
   ];
 
@@ -80,9 +89,13 @@ export default function Services() {
               <div className="absolute top-0 bottom-0 left-0 w-1.5 bg-gradient-to-b from-blue-400 to-blue-500 transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top" />
 
               <div className="flex-shrink-0">
-                <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-slate-50 shadow-sm group-hover:border-blue-50 transition-colors relative">
+                <div
+                  className="w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-slate-50 shadow-sm group-hover:border-blue-50 transition-colors relative cursor-pointer"
+                  onClick={() => setSelectedService(service)}
+                >
                   <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors" />
+                  <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors rounded-full" />
                 </div>
               </div>
 
@@ -113,6 +126,46 @@ export default function Services() {
         </StaggerContainer>
 
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedService && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => setSelectedService(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+              className="relative max-w-4xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setSelectedService(null)}
+                className="absolute -top-12 right-0 bg-slate-900/70 hover:bg-slate-900 text-white rounded-full p-1.5 transition-colors"
+                aria-label="Tutup"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <img
+                src={selectedService.image}
+                alt={selectedService.title}
+                className="w-full h-auto rounded-lg shadow-2xl"
+              />
+            </motion.div>
+
+            <p className="absolute bottom-6 text-white/40 text-xs">Klik di luar untuk menutup · ESC</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

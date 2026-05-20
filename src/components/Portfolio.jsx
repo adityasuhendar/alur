@@ -1,52 +1,61 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, X } from "lucide-react";
 import { FadeUp, FadeLeft, StaggerContainer, staggerChildVariants, AnimatedLine } from "./MotionWrapper";
 
 export default function Portfolio() {
+  const [selectedProject, setSelectedProject] = useState(null);
+
+  // Close on Escape key
+  useEffect(() => {
+    const handler = (e) => { if (e.key === "Escape") setSelectedProject(null); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
   const projects = [
     {
       title: "Bendungan PLTA Garoga",
       location: "Sumatera Utara",
       technology: "LIDAR",
       description: "Pemetaan Topografi di Sungai Bilah untuk akses mobilitas pembangunan bendungan PLTA sepanjang 9 km.",
-      image: "https://images.unsplash.com/photo-1503708928676-1cb796a0891e?auto=format&fit=crop&q=80&w=800",
+      image: "/portfolio/garoga.jpg",
     },
     {
       title: "Bendungan Seblat",
       location: "Bengkulu",
       technology: "LIDAR & Terestris",
       description: "Pembuatan Long & Cross Section serta Peta Topografi Bendungan di Seblat.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+      image: "/portfolio/seblat.jpg",
     },
     {
       title: "Jalan Nasional Langsa-Aceh",
       location: "Aceh",
       technology: "LIDAR UAV",
       description: "Pembuatan Long & Cross Section Jalan Nasional 43 km pasca bencana Banjir Aceh.",
-      image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&q=80&w=800",
+      image: "/portfolio/langsa-aceh.jpg",
     },
     {
       title: "Sungai Irigasi Bengkulu Selatan",
       location: "Bengkulu Selatan",
       technology: "UAV Photogrammetry",
       description: "Dokumentasi Sungai Irigasi untuk perencanaan jalur aliran irigasi lahan pertanian wilayah setempat.",
-      image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800",
+      image: "/portfolio/bengkulu.jpg",
     },
     {
       title: "Pemotretan Drone PUNA untuk PTSL",
       location: "Kab. Mukomuko, Kepahiang, Seluma, Rejang Lebong & Kaur — Bengkulu",
       technology: "Drone PUNA",
       description: "Pemotretan udara menggunakan Drone PUNA untuk mendukung program Pendaftaran Tanah Sistematis Lengkap (PTSL) di lima kabupaten wilayah Provinsi Bengkulu.",
-      image: "https://images.unsplash.com/photo-1508444845599-5c89863b1c44?auto=format&fit=crop&q=80&w=800",
+      image: "/portfolio/ptsl.jpg",
     },
     {
       title: "Survei LIDAR Jalan Tambang",
       location: "Sulawesi Selatan",
       technology: "LIDAR",
       description: "Survei LIDAR untuk perencanaan dan pembukaan akses jalan tambang, menghasilkan data topografi presisi tinggi sebagai dasar desain trase jalan di wilayah Sulawesi Selatan.",
-      image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=800",
+      image: "/portfolio/jalan-tambang.jpg",
     },
   ];
 
@@ -78,7 +87,10 @@ export default function Portfolio() {
               whileHover={{ y: -5, transition: { duration: 0.3 } }}
               className="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 group hover:shadow-xl transition-all"
             >
-              <div className="relative h-64 overflow-hidden">
+              <div
+                className="relative h-64 overflow-hidden cursor-pointer"
+                onClick={() => setSelectedProject(project)}
+              >
                 <motion.div
                   whileHover={{ scale: 1.08 }}
                   transition={{ duration: 0.7, ease: "easeOut" }}
@@ -107,6 +119,46 @@ export default function Portfolio() {
         </StaggerContainer>
 
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+              className="relative max-w-4xl w-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="absolute -top-12 right-0 bg-slate-900/70 hover:bg-slate-900 text-white rounded-full p-1.5 transition-colors"
+                aria-label="Tutup"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <img
+                src={selectedProject.image}
+                alt={selectedProject.title}
+                className="w-full h-auto rounded-lg shadow-2xl"
+              />
+            </motion.div>
+
+            <p className="absolute bottom-6 text-white/40 text-xs">Klik di luar untuk menutup · ESC</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
